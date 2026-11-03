@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Средняя Общеобразовательная Школа №158 — г. Ташкент</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'Rubik', 'sans-serif'],
+                    },
+                    colors: {
+                        school: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#0c4a6e',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-header {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col selection:bg-sky-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 glass-header border-b border-slate-200/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-600 via-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-lg shadow-sky-200 transform group-hover:rotate-6 transition-transform">
+                    <i data-lucide="school" class="w-7 h-7"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-sky-700 via-blue-700 to-indigo-800 bg-clip-text text-transparent">
+                        Школа №158
+                    </h1>
+                    <span class="text-xs font-semibold text-slate-400 tracking-wider uppercase block">г. Ташкент</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center space-x-1 font-semibold text-sm text-slate-600">
+                <a href="#hero" class="px-3.5 py-2 rounded-xl hover:text-sky-600 hover:bg-sky-50 transition-colors">Главная</a>
+                <a href="#about" class="px-3.5 py-2 rounded-xl hover:text-sky-600 hover:bg-sky-50 transition-colors">О школе</a>
+                <a href="#subjects" class="px-3.5 py-2 rounded-xl hover:text-sky-600 hover:bg-sky-50 transition-colors">Предметы</a>
+                <a href="#schedule" class="px-3.5 py-2 rounded-xl hover:text-sky-600 hover:bg-sky-50 transition-colors">Расписание</a>
+                <a href="#teachers" class="px-3.5 py-2 rounded-xl hover:text-sky-600 hover:bg-sky-50 transition-colors">Педагоги</a>
+                <a href="#news" class="px-3.5 py-2 rounded-xl hover:text-sky-600 hover:bg-sky-50 transition-colors">Новости</a>
+                <a href="#contact" class="px-3.5 py-2 rounded-xl hover:text-sky-600 hover:bg-sky-50 transition-colors">Контакты</a>
+            </nav>
+
+            <div class="hidden sm:flex items-center space-x-2">
+                <a href="#contact" class="inline-flex items-center space-x-2 bg-sky-600 hover:bg-sky-700 text-white font-semibold px-4 py-2.5 rounded-xl text-sm shadow-md shadow-sky-200 transition-all hover:shadow-lg hover:-translate-y-0.5">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    <span>Написать нам</span>
+                </a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none">
+                <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-100 bg-white/95 px-4 py-4 space-y-2 shadow-lg">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-700 font-medium hover:bg-sky-50">Главная</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-700 font-medium hover:bg-sky-50">О школе</a>
+            <a href="#subjects" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-700 font-medium hover:bg-sky-50">Предметы</a>
+            <a href="#schedule" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-700 font-medium hover:bg-sky-50">Расписание</a>
+            <a href="#teachers" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-700 font-medium hover:bg-sky-50">Педагоги</a>
+            <a href="#news" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-700 font-medium hover:bg-sky-50">Новости</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-700 font-medium hover:bg-sky-50">Контакты</a>
+        </div>
+    </header>
+
+    <!-- Main Body -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-20">
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-sky-900 to-blue-900 text-white p-8 sm:p-14 shadow-2xl">
+            <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-sky-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute right-1/3 -top-10 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 max-w-3xl space-y-6">
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-sky-200 text-xs font-bold">
+                    <i data-lucide="award" class="w-4 h-4 text-amber-400"></i>
+                    <span>Средняя Общеобразовательная Школа №158</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                    Качественное образование и знания для каждого 🎓
+                </h2>
+                <p class="text-slate-300 text-base sm:text-xl font-normal leading-relaxed">
+                    Добро пожаловать на официальный портал Школы №158 города Ташкента. Мы создаем комфортные условия для интеллектуального и творческого развития учеников.
+                </p>
+
+                <!-- Director Mention Badge -->
+                <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center space-x-4 max-w-md">
+                    <div class="w-12 h-12 rounded-full bg-amber-400 text-slate-900 flex items-center justify-center font-bold text-lg shrink-0">
+                        ТГ
+                    </div>
+                    <div>
+                        <div class="text-xs text-sky-200 uppercase font-semibold tracking-wider">Директор школы</div>
+                        <div class="text-base font-bold text-white">Татьяна Александровна Грибанова</div>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex flex-wrap gap-4">
+                    <a href="#schedule" class="px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-bold transition-all shadow-lg shadow-sky-500/30 flex items-center space-x-2">
+                        <i data-lucide="calendar" class="w-5 h-5"></i>
+                        <span>Расписание уроков</span>
+                    </a>
+                    <a href="#subjects" class="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold backdrop-blur-md transition-colors">
+                        Предметы и Учителя
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Leadership Section -->
+        <section id="about" class="space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-600 bg-sky-100 px-3 py-1 rounded-full">О школе и Руководстве</span>
+                <h2 class="text-3xl font-extrabold text-slate-900">Добро пожаловать в Школу №158</h2>
+                <p class="text-slate-500">Мирабадский район, г. Ташкент</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Director Card -->
+                <div class="bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-200/80 p-6 rounded-2xl shadow-sm flex flex-col justify-between space-y-4 md:col-span-1">
+                    <div class="space-y-4">
+                        <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-sky-600 to-indigo-700 text-white flex items-center justify-center text-2xl font-black shadow-md mx-auto sm:mx-0">
+                            ТГ
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Руководство</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1">Татьяна Александровна Грибанова</h3>
+                            <p class="text-xs font-semibold text-slate-500">Директор Школы №158</p>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            «Наша цель — обеспечить высокое качество образования, поддержать инициативы каждого ученика и создать атмосферу взаимоуважения и развития.»
+                        </p>
+                    </div>
+                </div>
+
+                <!-- School Features -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center">
+                        <i data-lucide="book-open" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Современная учебная программа</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed">Углубленное изучение естественных, точных и гуманитарных наук в соответствии с государственными стандартами Узбекистана.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Сильный педагогический коллектив</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed">Опытные учителя высшей категории, регулярно повышающие квалификацию и любящие свое дело.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subjects Grid Section -->
+        <section id="subjects" class="space-y-8">
+            <div class="text-center max-w-xl mx-auto space-y-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-600 bg-sky-100 px-3 py-1 rounded-full">Учебный план</span>
+                <h2 class="text-3xl font-extrabold text-slate-900">Школьные Предметы</h2>
+                <p class="text-slate-500 text-sm">Кликните по предмету, чтобы узнать ведущих преподавателей и список тем</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="subjectsGrid">
+                <!-- Dynamic Content -->
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="schedule" class="bg-white rounded-3xl p-6 sm:p-10 shadow-lg border border-slate-200/80 space-y-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-6">
+                <div>
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-xs font-bold mb-2">
+                        <i data-lucide="clock" class="w-4 h-4"></i>
+                        <span>Учебный процесс</span>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-slate-900">Расписание Уроков</h2>
+                    <p class="text-slate-500 text-sm">Интерактивное расписание по дням недели</p>
+                </div>
+
+                <!-- Class Select Dropdown -->
+                <div class="flex items-center space-x-3">
+                    <label for="classSelect" class="text-sm font-bold text-slate-700">Класс:</label>
+                    <select id="classSelect" onchange="updateSchedule()" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-800 font-bold focus:ring-2 focus:ring-sky-500 focus:outline-none">
+                        <option value="9А" selected>9-А класс</option>
+                        <option value="10Б">10-Б класс</option>
+                        <option value="11А">11-А класс</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Days Tabs -->
+            <div class="flex space-x-2 overflow-x-auto pb-2 custom-scrollbar" id="daysTabs">
+                <button onclick="selectDay('mon')" id="tab-mon" class="day-tab px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-sky-600 text-white shadow-md">Понедельник</button>
+                <button onclick="selectDay('tue')" id="tab-tue" class="day-tab px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Вторник</button>
+                <button onclick="selectDay('wed')" id="tab-wed" class="day-tab px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Среда</button>
+                <button onclick="selectDay('thu')" id="tab-thu" class="day-tab px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Четверг</button>
+                <button onclick="selectDay('fri')" id="tab-fri" class="day-tab px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Пятница</button>
+            </div>
+
+            <!-- Schedule Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-500 text-xs font-bold uppercase tracking-wider border-y border-slate-200">
+                            <th class="py-3.5 px-4">№</th>
+                            <th class="py-3.5 px-4">Время</th>
+                            <th class="py-3.5 px-4">Предмет</th>
+                            <th class="py-3.5 px-4">Кабинет</th>
+                            <th class="py-3.5 px-4">Учитель</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleTableBody" class="divide-y divide-slate-100 text-sm font-semibold">
+                        <!-- Dynamic schedule rows -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Teachers Gallery Section -->
+        <section id="teachers" class="space-y-8">
+            <div class="text-center max-w-xl mx-auto space-y-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-600 bg-sky-100 px-3 py-1 rounded-full">Педагогический состав</span>
+                <h2 class="text-3xl font-extrabold text-slate-900">Наши Преподаватели</h2>
+                <p class="text-slate-500 text-sm">Учителя, передающие знания и вдохновение ученикам</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Director -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md transition-shadow text-center p-6 space-y-4">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-sky-600 to-indigo-700 flex items-center justify-center text-white text-3xl font-black shadow-md">
+                        ТГ
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Татьяна Александровна Грибанова</h3>
+                        <p class="text-xs font-semibold text-sky-600">Директор Школы №158</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Руководство общеобразовательным процессом и развитие школы.</p>
+                </div>
+
+                <!-- Teacher 1 -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md transition-shadow text-center p-6 space-y-4">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-purple-500 to-indigo-600 flex items-center justify-center text-white text-3xl font-black shadow-md">
+                        НВ
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Надежда Вильямовна</h3>
+                        <p class="text-xs font-semibold text-purple-600">История Узбекистана</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Учитель истории. Преподавание богатого наследия и культуры Узбекистана.</p>
+                </div>
+
+                <!-- Teacher 2 -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md transition-shadow text-center p-6 space-y-4">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center text-white text-3xl font-black shadow-md">
+                        НЭ
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Нодыра Эргашевна</h3>
+                        <p class="text-xs font-semibold text-amber-600">Физика и Химия</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Преподаватель естествознания, физических и химических дисциплин.</p>
+                </div>
+
+                <!-- Teacher 3 -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md transition-shadow text-center p-6 space-y-4">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center text-white text-3xl font-black shadow-md">
+                        ЕР
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Елена Ренатовна</h3>
+                        <p class="text-xs font-semibold text-emerald-600">Физика и Химия</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Опыты, химические реакции и фундаментальные законы физики.</p>
+                </div>
+
+                <!-- Teacher 4 -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md transition-shadow text-center p-6 space-y-4 sm:col-span-2 lg:col-span-1">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center text-white text-3xl font-black shadow-md">
+                        ВН
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Владимир Николаевич</h3>
+                        <p class="text-xs font-semibold text-sky-600">Математика и Алгебра</p>
+                    </div>
+                    <p class="text-xs text-slate-500">Учитель точных наук, алгебры, геометрии и математической логики.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-sky-600 bg-sky-100 px-3 py-1 rounded-full">События</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Новости Школы №158</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+                    <div class="flex items-center justify-between text-xs text-slate-400 font-semibold">
+                        <span>Олимпиада</span>
+                        <span>02 Ноября 2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 hover:text-sky-600 transition-colors">
+                        Призовые места на районной олимпиаде по Точным Наукам!
+                    </h3>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        Поздравляем учащихся, подготовивших лучшие работы под руководством Владимира Николаевича и Нодыры Эргашевны.
+                    </p>
+                </article>
+
+                <article class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+                    <div class="flex items-center justify-between text-xs text-slate-400 font-semibold">
+                        <span>Культура</span>
+                        <span>20 Октября 2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 hover:text-sky-600 transition-colors">
+                        Выставка «Историческое наследие Ташкента»
+                    </h3>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        Ученики школы организовали выставку проектов по Истории Узбекистана под кураторством Надежды Вильямовны.
+                    </p>
+                </article>
+
+                <article class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm hover:shadow-md transition-shadow space-y-3">
+                    <div class="flex items-center justify-between text-xs text-slate-400 font-semibold">
+                        <span>Объявление</span>
+                        <span>10 Октября 2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 hover:text-sky-600 transition-colors">
+                        Родительское собрание с директором школы
+                    </h3>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        Татьяна Александровна Грибанова провела плановую встречу с родительским комитетом по вопросам учебного процесса.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Feedback & Contacts Section -->
+        <section id="contact" class="bg-gradient-to-br from-slate-900 to-sky-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Info -->
+            <div class="space-y-6">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-900/50 px-3 py-1 rounded-full border border-sky-700/50">Контакты</span>
+                <h2 class="text-3xl font-extrabold">Средняя Общеобразовательная Школа №158</h2>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Администрация школы всегда рада ответить на вопросы учеников и родителей.
+                </p>
+
+                <div class="space-y-4 pt-2 text-sm">
+                    <div class="flex items-start space-x-3">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
+                        <span>Узбекистан, г. Ташкент, Мирабадский район</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="user-check" class="w-5 h-5 text-sky-400 shrink-0"></i>
+                        <span>Директор: Татьяна Александровна Грибанова</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="phone" class="w-5 h-5 text-sky-400 shrink-0"></i>
+                        <span>+998 (71) 200-15-80</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="mail" class="w-5 h-5 text-sky-400 shrink-0"></i>
+                        <span>info@school158.uz</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback Form -->
+            <form onsubmit="handleFormSubmit(event)" class="bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-white/10 space-y-4">
+                <h3 class="text-xl font-bold text-white mb-2">Форма обратной связи</h3>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">ФИО (Родителя или Ученика)</label>
+                    <input type="text" required placeholder="Введите ваше имя" class="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Телефон или Email</label>
+                    <input type="text" required placeholder="+998 90 123-45-67" class="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Сообщение или Вопрос</label>
+                    <textarea rows="3" required placeholder="Ваше обращение..." class="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-white font-bold py-3 rounded-xl shadow-lg transition-colors flex items-center justify-center space-x-2">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>Отправить обращение</span>
+                </button>
+                <div id="formSuccess" class="hidden text-xs text-emerald-400 text-center pt-2 font-semibold">
+                    ✓ Сообщение успешно отправлено в администрацию!
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+            <div class="flex items-center justify-center space-x-2 text-white font-bold text-lg">
+                <i data-lucide="school" class="w-6 h-6 text-sky-400"></i>
+                <span>Средняя Общеобразовательная Школа №158</span>
+            </div>
+            <p class="text-xs text-slate-500">Директор: Татьяна Александровна Грибанова • г. Ташкент, Мирабадский район</p>
+            <p class="text-xs text-slate-600">© 2026 Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Subject Modal Window -->
+    <div id="subjectModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeSubjectModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 p-2 rounded-full hover:bg-slate-100">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <div class="flex items-center space-x-4">
+                <div id="modalIconContainer" class="w-14 h-14 rounded-2xl flex items-center justify-center text-white text-2xl shadow-md">
+                </div>
+                <div>
+                    <h3 id="modalTitle" class="text-2xl font-bold text-slate-900"></h3>
+                    <p id="modalTeacher" class="text-xs font-bold text-sky-600"></p>
+                </div>
+            </div>
+
+            <div class="space-y-3 text-sm text-slate-600">
+                <p id="modalDesc" class="leading-relaxed"></p>
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <h4 class="font-bold text-slate-800 mb-2 text-xs uppercase tracking-wider">Ключевые темы и программа:</h4>
+                    <ul id="modalTopics" class="list-disc list-inside space-y-1 text-xs text-slate-600">
+                    </ul>
+                </div>
+            </div>
+
+            <button onclick="closeSubjectModal()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl transition-colors text-sm">
+                Понятно
+            </button>
+        </div>
+    </div>
+
+    <!-- Script Data & Logic -->
+    <script>
+        const subjectsData = [
+            {
+                id: 'history_uz',
+                title: 'История Узбекистана',
+                teacher: 'Учитель: Надежда Вильямовна',
+                icon: 'landmark',
+                color: 'from-purple-500 to-indigo-600',
+                short: 'Преподаватель: Надежда Вильямовна. История, культура и наследие.',
+                desc: 'Глубокое изучение богатой истории Узбекистана, древнейших цивилизаций, эпохи Великого Шелкового пути и великих ученых Востока.',
+                topics: [
+                    'Древнейшие государства на территории Узбекистана',
+                    'Эпоха Восточного Ренессанса (Аль-Хорезми, Беруни, Ибн Сино)',
+                    'Государство Амира Темура и Темуриды',
+                    'Новейшая история и независимость Узбекистана'
+                ]
+            },
+            {
+                id: 'physics_chemistry',
+                title: 'Физика и Химия',
+                teacher: 'Учителя: Нодыра Эргашевна, Елена Ренатовна',
+                icon: 'zap',
+                color: 'from-amber-500 to-orange-600',
+                short: 'Преподаватели: Нодыра Эргашевна и Елена Ренатовна.',
+                desc: 'Изучение фундаментальных законов природы, физических явлений, строения вещества и химических реакций в школьных лабораториях.',
+                topics: [
+                    'Механика, законы движения и динамика',
+                    'Молекулярная физика и термодинамика',
+                    'Периодический закон Д.И. Менделеева',
+                    'Органическая и неорганическая химия, реакции'
+                ]
+            },
+            {
+                id: 'math',
+                title: 'Математика и Алгебра',
+                teacher: 'Учитель: Владимир Николаевич',
+                icon: 'calculator',
+                color: 'from-sky-500 to-blue-600',
+                short: 'Преподаватель: Владимир Николаевич. Алгебра и логика.',
+                desc: 'Развитие аналитического мышления, решение уравнений, планиметрия, стереометрия и подготовка к экзаменам.',
+                topics: [
+                    'Квадратные уравнения и неравенства',
+                    'Функции и их графики',
+                    'Геометрия: треугольники, многоугольники и объемы',
+                    'Элементы теории вероятностей'
+                ]
+            }
+        ];
+
+        const scheduleData = {
+            '9А': {
+                'mon': [
+                    { num: 1, time: '08:30 - 09:15', subject: 'Математика / Алгебра', room: 'Каб. 201', teacher: 'Владимир Николаевич' },
+                    { num: 2, time: '09:25 - 10:10', subject: 'История Узбекистана', room: 'Каб. 104', teacher: 'Надежда Вильямовна' },
+                    { num: 3, time: '10:25 - 11:10', subject: 'Физика', room: 'Каб. 302', teacher: 'Нодыра Эргашевна' },
+                    { num: 4, time: '11:25 - 12:10', subject: 'Химия', room: 'Каб. 303', teacher: 'Елена Ренатовна' }
+                ],
+                'tue': [
+                    { num: 1, time: '08:30 - 09:15', subject: 'История Узбекистана', room: 'Каб. 104', teacher: 'Надежда Вильямовна' },
+                    { num: 2, time: '09:25 - 10:10', subject: 'Математика', room: 'Каб. 201', teacher: 'Владимир Николаевич' },
+                    { num: 3, time: '10:25 - 11:10', subject: 'Физика', room: 'Каб. 302', teacher: 'Нодыра Эргашевна' }
+                ],
+                'wed': [
+                    { num: 1, time: '08:30 - 09:15', subject: 'Химия', room: 'Каб. 303', teacher: 'Елена Ренатовна' },
+                    { num: 2, time: '09:25 - 10:10', subject: 'Алгебра', room: 'Каб. 201', teacher: 'Владимир Николаевич' },
+                    { num: 3, time: '10:25 - 11:10', subject: 'История Узбекистана', room: 'Каб. 104', teacher: 'Надежда Вильямовна' }
+                ],
+                'thu': [
+                    { num: 1, time: '08:30 - 09:15', subject: 'Математика', room: 'Каб. 201', teacher: 'Владимир Николаевич' },
+                    { num: 2, time: '09:25 - 10:10', subject: 'Физика', room: 'Каб. 302', teacher: 'Елена Ренатовна' },
+                    { num: 3, time: '10:25 - 11:10', subject: 'Химия', room: 'Каб. 303', teacher: 'Нодыра Эргашевна' }
+                ],
+                'fri': [
+                    { num: 1, time: '08:30 - 09:15', subject: 'Физика', room: 'Каб. 302', teacher: 'Нодыра Эргашевна' },
+                    { num: 2, time: '09:25 - 10:10', subject: 'Алгебра', room: 'Каб. 201', teacher: 'Владимир Николаевич' },
+                    { num: 3, time: '10:25 - 11:10', subject: 'История Узбекистана', room: 'Каб. 104', teacher: 'Надежда Вильямовна' }
+                ]
+            }
+        };
+
+        let currentDay = 'mon';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSubjects();
+            updateSchedule();
+            lucide.createIcons();
+        });
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function renderSubjects() {
+            const grid = document.getElementById('subjectsGrid');
+            grid.innerHTML = subjectsData.map(s => `
+                <div onclick="openSubjectModal('${s.id}')" class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr ${s.color} text-white flex items-center justify-center mb-4">
+                            <i data-lucide="${s.icon}" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-lg mb-1">${s.title}</h3>
+                        <p class="text-xs font-semibold text-sky-600 mb-2">${s.teacher}</p>
+                        <p class="text-xs text-slate-500 leading-relaxed">${s.short}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-sky-600 flex items-center justify-between">
+                        <span>Подробнее и программы</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openSubjectModal(id) {
+            const s = subjectsData.find(item => item.id === id);
+            if (!s) return;
+            
+            const modal = document.getElementById('subjectModal');
+            const iconContainer = document.getElementById('modalIconContainer');
+            
+            iconContainer.className = `w-14 h-14 rounded-2xl flex items-center justify-center text-white text-2xl shadow-md bg-gradient-to-tr ${s.color}`;
+            iconContainer.innerHTML = `<i data-lucide="${s.icon}" class="w-7 h-7"></i>`;
+            
+            document.getElementById('modalTitle').innerText = s.title;
+            document.getElementById('modalTeacher').innerText = s.teacher;
+            document.getElementById('modalDesc').innerText = s.desc;
+            document.getElementById('modalTopics').innerHTML = s.topics.map(t => `<li>${t}</li>`).join('');
+
+            modal.classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeSubjectModal() {
+            document.getElementById('subjectModal').classList.add('hidden');
+        }
+
+        function selectDay(day) {
+            currentDay = day;
+            document.querySelectorAll('.day-tab').forEach(btn => {
+                btn.className = "day-tab px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200";
+            });
+            document.getElementById(`tab-${day}`).className = "day-tab px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-sky-600 text-white shadow-md";
+            updateSchedule();
+        }
+
+        function updateSchedule() {
+            const classVal = document.getElementById('classSelect').value;
+            const tableBody = document.getElementById('scheduleTableBody');
+            const dayLessons = (scheduleData[classVal] && scheduleData[classVal][currentDay]) || scheduleData['9А'][currentDay];
+
+            tableBody.innerHTML = dayLessons.map(l => `
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-3.5 px-4 text-slate-400 font-bold">${l.num}</td>
+                    <td class="py-3.5 px-4 text-slate-600">${l.time}</td>
+                    <td class="py-3.5 px-4 text-slate-900 font-bold">${l.subject}</td>
+                    <td class="py-3.5 px-4 text-sky-600 font-medium">${l.room}</td>
+                    <td class="py-3.5 px-4 text-slate-500">${l.teacher}</td>
+                </tr>
+            `).join('');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const msg = document.getElementById('formSuccess');
+            msg.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => msg.classList.add('hidden'), 4000);
+        }
+    </script>
+</body>
+</html>
